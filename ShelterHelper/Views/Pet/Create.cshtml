@@ -1,0 +1,27 @@
+@model ShelterHelper.Models.Pet
+
+<h2>Add a New Pet to the Shelter</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Pet Name:</label>
+        <input asp-for="Name" class="form-control" required />
+    </div>
+    <div>
+        <label>Species:</label>
+        <select asp-for="Species" class="form-control">
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+        </select>
+    </div>
+    <div>
+        <label>Age:</label>
+        <input asp-for="Age" type="number" class="form-control" />
+    </div>
+    <div>
+        <label>Special Notes:</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Save Pet</button>
+</form>
