@@ -2,7 +2,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ShelterHelper.Services.PetService>();
+// Note: Using AddSingleton since your PetService uses an in-memory List
+builder.Services.AddSingleton<ShelterHelper.Services.PetService>();
 
 // Add authentication and authorization
 builder.Services.AddAuthentication("Cookies")
@@ -26,17 +27,17 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles(); // This handles all your CSS, JS, and Images in .NET 8
 app.UseRouting();
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapStaticAssets();
+// FIX: Removed app.MapStaticAssets() because it is only for .NET 9+
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Home}/{action=Index}/{id?}"); 
+    // FIX: Removed .WithStaticAssets() from the end of the route
 
 app.Run();
