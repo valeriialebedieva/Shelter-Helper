@@ -162,7 +162,6 @@
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/scopedcss/projectbundle/ShelterHelper.bundle.scp.css
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/4z9y14r1iu-{0}-999ccfbvtt-999ccfbvtt.gz
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/oz5of15ac3-{0}-61n19gt1b8-61n19gt1b8.gz
-/Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/um2lxxj0n0-{0}-33j6nurreq-33j6nurreq.gz
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/shmlmao7ey-{0}-085od2hbbj-085od2hbbj.gz
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/zyt0r89hx5-{0}-5ikfauy451-5ikfauy451.gz
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/if33xp5w66-{0}-4dxg91u4as-4dxg91u4as.gz
@@ -243,3 +242,6 @@
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/ShelterHelper.pdb
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/ShelterHelper.genruntimeconfig.cache
 /Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/ref/ShelterHelper.dll
+/Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/x85czokzon-{0}-k7wrhpfwtl-k7wrhpfwtl.gz
+/Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/um2lxxj0n0-{0}-k7wrhpfwtl-k7wrhpfwtl.gz
+/Users/valeriia.lebedieva/Downloads/Shelter-Helper/ShelterHelper/obj/Debug/net10.0/compressed/776cmp63h9-{0}-k7wrhpfwtl-k7wrhpfwtl.gz

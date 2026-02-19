@@ -59,6 +59,12 @@ public class PetController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Pet newPet, IFormFile petPhoto)
     {
+        // Validate that image was provided
+        if (petPhoto == null || petPhoto.Length == 0)
+        {
+            ModelState.AddModelError("petPhoto", "Pet photo is required");
+        }
+
         if (!ModelState.IsValid)
         {
             return View(newPet);
@@ -66,35 +72,32 @@ public class PetController : Controller
 
         try
         {
-            // Handle image upload if provided
-            if (petPhoto != null && petPhoto.Length > 0)
+            // Handle image upload
+            const long maxFileSize = 5 * 1024 * 1024; // 5MB max
+            if (petPhoto.Length > maxFileSize)
             {
-                const long maxFileSize = 5 * 1024 * 1024; // 5MB max
-                if (petPhoto.Length > maxFileSize)
-                {
-                    ModelState.AddModelError("petPhoto", "File size cannot exceed 5MB");
-                    return View(newPet);
-                }
-
-                // Create a unique name for the image to avoid overwriting
-                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(petPhoto.FileName);
-                string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-                
-                // Ensure directory exists
-                if (!Directory.Exists(imagePath))
-                {
-                    Directory.CreateDirectory(imagePath);
-                }
-
-                string savePath = Path.Combine(imagePath, fileName);
-
-                using (var stream = new FileStream(savePath, FileMode.Create))
-                {
-                    await petPhoto.CopyToAsync(stream);
-                }
-
-                newPet.ImagePath = "/images/" + fileName;
+                ModelState.AddModelError("petPhoto", "File size cannot exceed 5MB");
+                return View(newPet);
             }
+
+            // Create a unique name for the image to avoid overwriting
+            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(petPhoto.FileName);
+            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+            
+            // Ensure directory exists
+            if (!Directory.Exists(imagePath))
+            {
+                Directory.CreateDirectory(imagePath);
+            }
+
+            string savePath = Path.Combine(imagePath, fileName);
+
+            using (var stream = new FileStream(savePath, FileMode.Create))
+            {
+                await petPhoto.CopyToAsync(stream);
+            }
+
+            newPet.ImagePath = "/images/" + fileName;
 
             _petService.AddPet(newPet);
             return RedirectToAction("Index");
