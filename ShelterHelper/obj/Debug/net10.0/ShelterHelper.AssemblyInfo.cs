@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShelterHelper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49af96bb15166257636e5f01144561257ad3fc10")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShelterHelper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShelterHelper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,45 @@
+@using ShelterHelper.Models
+@using ShelterHelper.Services
+@inject PetService PetService
+@page "/"
+@inject PetService PetService
+
+<div class="hero-section text-center p-5 bg-light mb-4">
+    <h1>Meet Your New Best Friend</h1>
+    @if (PetService.GetPetOfTheWeek() is Pet pow)
+    {
+        <div class="card mx-auto mt-3" style="max-width: 400px;">
+            <div class="card-header bg-warning">Pet of the Week!</div>
+            <img src="@pow.ImagePath" class="card-img-top" alt="@pow.Name">
+            <div class="card-body"><h5>@pow.Name</h5></div>
+        </div>
+    }
+</div>
+
+<div class="container">
+    <div class="d-flex gap-2 mb-4">
+        <button class="btn btn-outline-primary" @onclick='() => filter = ""'>All</button>
+        <button class="btn btn-outline-primary" @onclick='() => filter = "Dog"'>Dogs</button>
+        <button class="btn btn-outline-primary" @onclick='() => filter = "Cat"'>Cats</button>
+    </div>
+
+    <div class="row">
+       @foreach (var pet in PetService.GetAvailablePets(filter))
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="@pet.ImagePath" class="card-img-top" alt="@pet.Name">
+                    <div class="card-body">
+                        <h5>@pet.Name</h5>
+                        <p>@pet.Breed</p>
+                        <button class="btn btn-primary">Request Adoption</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private string filter = "";
+}

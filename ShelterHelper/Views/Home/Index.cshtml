@@ -1,27 +1,32 @@
 ﻿@model IEnumerable<ShelterHelper.Models.Pet>
 
-<form asp-action="Index" method="get" class="mb-4">
-    <div class="input-group">
-        <input type="text" name="searchString" placeholder="Search by name..." class="form-control" />
-        <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-</form>
+<div class="container">
+    <h2 class="my-4">Furry Friends Gallery</h2>
 
-<div class="row">
-    @foreach (var pet in Model)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4">
-                @if (!string.IsNullOrEmpty(pet.ImagePath))
-                {
-                    <img src="@pet.ImagePath" class="card-img-top" alt="Pet Photo" style="height:200px; object-fit:cover;">
-                }
-                <div class="card-body">
-                    <h5 class="card-title">@pet.Name</h5>
-                    <p>@pet.Species - @pet.Breed</p>
-                    <p class="text-muted">@pet.Notes</p>
+    <form asp-action="Index" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="searchString" placeholder="Search by name..." class="form-control" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <div class="row">
+        @foreach (var pet in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    @if (!string.IsNullOrEmpty(pet.ImagePath))
+                    {
+                        <img src="@pet.ImagePath" class="card-img-top" alt="@pet.Name" style="height:200px; object-fit:cover;">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@pet.Name</h5>
+                        <p class="card-text">@pet.Species - @pet.Breed</p>
+                        <p class="text-muted small">@pet.Notes</p>
+                        <button class="btn btn-primary w-100">Request Adoption</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
