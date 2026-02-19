@@ -183,6 +183,8 @@ namespace ShelterHelper.Services
         {
             pet.Id = _pets.Count > 0 ? _pets.Max(p => p.Id) + 1 : 1;
             _pets.Add(pet);
+            // Persist changes
+            SavePets();
         }
 
         /// <summary>
@@ -193,14 +195,21 @@ namespace ShelterHelper.Services
         {
             var index = _pets.FindIndex(p => p.Id == updatedPet.Id);
             if (index != -1)
+            {
                 _pets[index] = updatedPet;
+                SavePets();
+            }
         }
 
         /// <summary>
         /// Deletes a pet from the system by ID.
         /// </summary>
         /// <param name="id">The ID of the pet to delete</param>
-        public void DeletePet(int id) => _pets.RemoveAll(p => p.Id == id);
+        public void DeletePet(int id)
+        {
+            _pets.RemoveAll(p => p.Id == id);
+            SavePets();
+        }
 
         /// <summary>
         /// Retrieves a specific pet by ID.

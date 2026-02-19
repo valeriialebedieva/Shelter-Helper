@@ -90,27 +90,29 @@
 
                         <!-- Card Footer with Actions -->
                         <div class="card-footer bg-light">
-                            @if (User.Identity?.IsAuthenticated == true)
-                            {
-                                <div class="btn-group w-100" role="group" aria-label="Pet actions">
-                                    <a asp-controller="Pet" asp-action="Edit" asp-route-id="@pet.Id" 
-                                       class="btn btn-sm btn-outline-primary" title="Edit pet">
-                                        ✏️ Edit
-                                    </a>
-                                    <a asp-controller="Pet" asp-action="Delete" asp-route-id="@pet.Id" 
-                                       class="btn btn-sm btn-outline-danger" title="Delete pet">
-                                        🗑️ Delete
-                                    </a>
-                                </div>
-                            }
-                            else
-                            {
-                                <p class="text-muted small mb-0">
-                                    <a asp-controller="Account" asp-action="Login" class="text-decoration-none">
-                                        Sign in to manage pets
-                                    </a>
-                                </p>
-                            }
+                            <div class="d-flex gap-2">
+                                <a asp-controller="Adoption" asp-action="Request" asp-route-petId="@pet.Id" class="btn btn-sm btn-primary flex-grow-1">
+                                    📨 Request Adoption
+                                </a>
+
+                                @if (User.Identity?.IsAuthenticated == true)
+                                {
+                                    <div class="btn-group" role="group" aria-label="Pet actions">
+                                        <a asp-controller="Pet" asp-action="Edit" asp-route-id="@pet.Id" 
+                                           class="btn btn-sm btn-outline-primary" title="Edit pet">
+                                            ✏️
+                                        </a>
+                                        <a asp-controller="Pet" asp-action="Delete" asp-route-id="@pet.Id" 
+                                           class="btn btn-sm btn-outline-danger" title="Delete pet">
+                                            🗑️
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Account" asp-action="Login" class="btn btn-sm btn-outline-secondary">Sign in</a>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

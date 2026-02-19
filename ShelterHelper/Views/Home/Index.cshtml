@@ -23,7 +23,7 @@
                         <h5 class="card-title">@pet.Name</h5>
                         <p class="card-text">@pet.Species - @pet.Breed</p>
                         <p class="text-muted small">@pet.Notes</p>
-                        <button class="btn btn-primary w-100">Request Adoption</button>
+                        <a asp-controller="Adoption" asp-action="Request" asp-route-petId="@pet.Id" class="btn btn-primary w-100">Request Adoption</a>
                     </div>
                 </div>
             </div>

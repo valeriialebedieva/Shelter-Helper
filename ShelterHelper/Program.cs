@@ -2,8 +2,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllersWithViews();
-// Note: Using AddSingleton since your PetService uses an in-memory List
+// Note: Using AddSingleton since services maintain in-memory + file persistence
 builder.Services.AddSingleton<ShelterHelper.Services.PetService>();
+builder.Services.AddSingleton<ShelterHelper.Services.AdoptionService>();
 
 // Add authentication and authorization
 builder.Services.AddAuthentication("Cookies")
